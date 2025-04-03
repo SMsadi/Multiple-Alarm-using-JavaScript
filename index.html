@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Alarm Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Multiple Alarm Clock</h1>
+
+    <div id="alarm-container">
+        <!-- Alarm 1 -->
+        <div class="alarm-box">
+            <h2>Alarm 1</h2>
+            <input type="time" id="alarmTime1">
+            <button class="set-alarm" onclick="setAlarm(1)">Set Alarm</button>
+            <button class="stop-alarm" onclick="stopAlarm(1)">Stop</button>
+            <button class="refresh-alarm" onclick="refreshAlarm(1)">Refresh</button>
+            <button class="snooze-alarm" onclick="snoozeAlarm(1)">Snooze</button>
+            <p class="alarm-message" id="alarmMessage1"></p>
+        </div>
+
+        <!-- Alarm 2 -->
+        <div class="alarm-box">
+            <h2>Alarm 2</h2>
+            <input type="time" id="alarmTime2">
+            <button class="set-alarm" onclick="setAlarm(2)">Set Alarm</button>
+            <button class="stop-alarm" onclick="stopAlarm(2)">Stop</button>
+            <button class="refresh-alarm" onclick="refreshAlarm(2)">Refresh</button>
+            <button class="snooze-alarm" onclick="snoozeAlarm(2)">Snooze</button>
+            <p class="alarm-message" id="alarmMessage2"></p>
+        </div>
+
+        <!-- Alarm 3 -->
+        <div class="alarm-box">
+            <h2>Alarm 3</h2>
+            <input type="time" id="alarmTime3">
+            <button class="set-alarm" onclick="setAlarm(3)">Set Alarm</button>
+            <button class="stop-alarm" onclick="stopAlarm(3)">Stop</button>
+            <button class="refresh-alarm" onclick="refreshAlarm(3)">Refresh</button>
+            <button class="snooze-alarm" onclick="snoozeAlarm(3)">Snooze</button>
+            <p class="alarm-message" id="alarmMessage3"></p>
+        </div>
+    </div>
+
+    <audio id="alarmSound" src="alarm.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
