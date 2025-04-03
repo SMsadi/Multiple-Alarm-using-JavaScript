@@ -1,8 +1,8 @@
-let alarms = {};
+let alarmTimeout = {};
 
 function setAlarm(alarmId) {
-    if (alarms[alarmId]) {
-        clearTimeout(alarms[alarmId]);
+    if (alarmTimeout[alarmId]) {
+        clearTimeout(alarmTimeout[alarmId]);
     }
 
     const alarmInput = document.getElementById(`alarmTime${alarmId}`).value;
@@ -20,7 +20,7 @@ function setAlarm(alarmId) {
 
     const timeToAlarm = alarmTime - now;
 
-    alarms[alarmId] = setTimeout(() => {
+    alarmTimeout[alarmId] = setTimeout(() => {
         document.getElementById("alarmSound").play();
         document.getElementById(`alarmMessage${alarmId}`).textContent = "⏰ Alarm is ringing!";
         document.getElementById(`alarmMessage${alarmId}`).style.color = "red";
@@ -32,15 +32,15 @@ function setAlarm(alarmId) {
 }
 
 function stopAlarm(alarmId) {
-    if (!alarms[alarmId]) {
+    if (!alarmTimeout[alarmId]) {
         alert("No active alarm to stop");
         return;
     }
 
     document.getElementById("alarmSound").pause();
     document.getElementById("alarmSound").currentTime = 0;
-    clearTimeout(alarms[alarmId]);
-    delete alarms[alarmId];
+    clearTimeout(alarmTimeout[alarmId]);
+    delete alarmTimeout[alarmId];
 
     document.getElementById(`alarmMessage${alarmId}`).textContent = "⏹️ Alarm stopped.";
     document.getElementById(`alarmMessage${alarmId}`).style.color = "red";
@@ -55,7 +55,7 @@ function refreshAlarm(alarmId) {
 function snoozeAlarm(alarmId) {
     if (!document.getElementById("alarmSound").paused) {
         stopAlarm(alarmId);
-        alarms[alarmId] = setTimeout(() => {
+        alarmTimeout[alarmId] = setTimeout(() => {
             document.getElementById("alarmSound").play();
             document.getElementById(`alarmMessage${alarmId}`).textContent = "⏰ Alarm ringing again!";
             document.getElementById(`alarmMessage${alarmId}`).style.color = "red";
